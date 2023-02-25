@@ -14,7 +14,7 @@
 # define RUSH02_H
 
 # include <unistd.h>
-# include <fcntl.h> // en
+# include <fcntl.h> // open
 # include <sys/stat.h> // open
 # include <sys/types.h> // open
 # include <stdlib.h>
@@ -28,23 +28,25 @@ typedef struct	s_dict
 	struct s_dict	*next;
 }				t_dict;
 
-char			**ft_split(char *str, char *charset);
 char			*ft_strdup(char *src);
-t_dict			*ft_list_push_strs(int size, char **strs);
+int				ft_strlen(char *str);
+
+void			ft_lst_sort(t_dict **begin_list);
+void			ft_lst_clear(t_dict **begin_with);
 t_dict			*ft_create_node(int n, int suffix, char *literal);
 int				ft_lst_push(t_dict **liste, int n, int suffix, char *lit);
+
 int				ft_file_read(char *filepath, t_dict **begin);
+
 int				ft_simple_atoi(char *str);
 void			ft_putstr(char *str);
 void			ft_putnbr(int nb);
 int				parse_dict(t_dict **begin, char *str);
-int				ft_strlen(char *str);
+
 int				check_number(char *nbr, t_dict *begin_list);
-void			ft_lst_sort(t_dict **begin_list);
-void			ft_lst_clear(t_dict **begin_with);
-void			check_and(int nb, int i, char *nbr);
 int				check_nb(int nb, t_dict *begin_list);
-void			to_print(int nbr, t_dict *begin_list, int i, char *nbrc);
+
+void			to_print(int nbr, t_dict *begin_list);
 void			print_union(int i, char *nbr, int j, t_dict *begin_list);
 int				check_length(char *nbr);
 

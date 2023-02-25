@@ -34,13 +34,12 @@ void	print_union(int i, char *nbr, int j, t_dict *start)
 		write(1, " ", 1);
 }
 
-void	print_spaces(int nbr, char *n, int i, t_dict *start)
+void	print_spaces(int nbr, t_dict *start)
 {
 	int		nb;
 
 	if ((nbr % 100) >= 20)
 	{
-		check_and(nbr, i, n);
 		print_nb((nb = (nbr % 100) - (nbr % 10)), start);
 		if (nbr % 10 != 0)
 		{
@@ -55,7 +54,7 @@ void	print_spaces(int nbr, char *n, int i, t_dict *start)
 	}
 }
 
-void	print_hundreds(int nbr, char *n, int i, t_dict *start)
+void	print_hundreds(int nbr, t_dict *start)
 {
 	int		nb;
 
@@ -67,18 +66,15 @@ void	print_hundreds(int nbr, char *n, int i, t_dict *start)
 	}
 	if (check_nb(nbr % 100, start) == 1)
 	{
-		check_and(nbr, i, n);
 		print_nb(nbr % 100, start);
 		if ((nbr % 100) >= 20)
 			ft_putstr(" ");
 	}
 	else
-	{
-		print_spaces(nbr, n, i, start);
-	}
+		print_spaces(nbr, start);
 }
 
-void	to_print(int nbr, t_dict *start, int i, char *n)
+void	to_print(int nbr, t_dict *start)
 {
 	int nb;
 
@@ -87,13 +83,10 @@ void	to_print(int nbr, t_dict *start, int i, char *n)
 	{
 		if (nb == 100)
 			ft_putstr("one ");
-		check_and(nbr, i, n);
 		print_nb(nb, start);
 		if (nb >= 20 && nb <= 99)
 			write(1, " ", 1);
 	}
 	else
-	{
-		print_hundreds(nbr, n, i, start);
-	}
+		print_hundreds(nbr, start);
 }

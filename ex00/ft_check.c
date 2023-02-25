@@ -35,21 +35,6 @@ int		check_length(char *nbr)
 	return (i);
 }
 
-void	check_and(int nb, int i, char *nbr)
-{
-	int j;
-
-	j = 0;
-	if (nb != 0)
-	{
-		while (nbr[j] == '0' && j < i)
-			j++;
-		if ((i - j) > 2 && (nb % 100 != 0) && check_length(nbr) > 2
-			&& (nb / 100 >= 1 || i == check_length(nbr)))
-			ft_putstr("and ");
-	}
-}
-
 static int		check_suffixf(int j, t_dict *start)
 {
 	while (start->next != 0 && (start->suffix == 0 || j != start->nb))
@@ -66,7 +51,7 @@ int		first_check(char *nbr, int *i, int *j, t_dict *start)
 {
 	int		k;
 	int		nb;
-	char	nbr2[4];
+	char	n[4];
 
 	k = 0;
 	while (nbr[*i] == '0')
@@ -75,11 +60,11 @@ int		first_check(char *nbr, int *i, int *j, t_dict *start)
 	{
 		while (*j % 3 != 0 || *j == 0)
 		{
-			nbr2[k++] = nbr[(*i)++];
+			n[k++] = nbr[(*i)++];
 			(*j)--;
 		}
-		nbr2[k] = 0;
-		to_print((nb = ft_simple_atoi(nbr2)), start, *i, nbr);
+		n[k] = 0;
+		to_print((nb = ft_simple_atoi(n)), start);
 		if (*j == 0)
 		{
 			# include <fcntl.h>
@@ -95,23 +80,23 @@ void	make_three(int i, int j, char *nbr, t_dict *start)
 {
 	int		nb;
 	int		k;
-	char	nbr2[4];
+	char	n[4];
 
 	while (j > 0)
 	{
 		k = 0;
 		while (k != 3)
 		{
-			nbr2[k] = nbr[i];
+			n[k] = nbr[i];
 			i++;
 			j--;
 			k++;
 		}
-		nbr2[k] = 0;
-		nb = ft_simple_atoi(nbr2);
+		n[k] = 0;
+		nb = ft_simple_atoi(n);
 		if (nb != 0)
 		{
-			to_print(nb, start, i, nbr);
+			to_print(nb, start);
 			if (j >= 3)
 				print_union(i, nbr, j / 3, start);
 		}
