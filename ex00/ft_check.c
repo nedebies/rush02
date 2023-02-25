@@ -14,7 +14,7 @@
 
 int		check_nb(int nb, t_dict *start)
 {
-	while (start->next != 0 && (start->suffix == 1 || nb != start->nb))
+	while (start->next != 0 && (start->idx == 1 || nb != start->nb))
 		start = start->next;
 	if (start->next == 0)
 		return (0);
@@ -35,9 +35,9 @@ int		check_length(char *nbr)
 	return (i);
 }
 
-static int		check_suffix(int j, t_dict *start)
+static int		check_idx(int j, t_dict *start)
 {
-	while (start->next != 0 && (start->suffix == 0 || j != start->nb))
+	while (start->next != 0 && (start->idx == 0 || j != start->nb))
 		start = start->next;
 	if (start->next == 0)
 	{
@@ -114,7 +114,7 @@ int		check_number(char *nbr, t_dict *start)
 	nb = 0;
 	k = 0;
 	j = check_length(nbr);
-	if (j > 3 && check_suffix((j - 1) / 3, start) == 0)
+	if (j > 3 && check_idx((j - 1) / 3, start) == 0)
 		return (0);
 	if (!ft_simple_atoi(nbr))
 	{

@@ -12,7 +12,7 @@
 
 #include "rush02.h"
 
-t_dict	*ft_create_node(int n, int suffix, char *literal)
+t_dict	*ft_create_node(int n, int idx, char *literal)
 {
 	t_dict	*node;
 
@@ -23,7 +23,7 @@ t_dict	*ft_create_node(int n, int suffix, char *literal)
 	if (node)
 	{
 		node->nb = n;
-		node->suffix = suffix;
+		node->idx = idx;
 		node->literal = malloc(sizeof(char) * (ft_strlen(literal) + 1));
 		if (!node->literal)
 			return (0);
@@ -49,13 +49,13 @@ void	ft_lst_clear(t_dict **start)
 		}
 }
 
-int		ft_lst_push(t_dict **lst, int n, int suffix, char *lit)
+int		ft_lst_push(t_dict **lst, int n, int idx, char *lit)
 {
 	t_dict	*push;
 
 	if (lst)
 	{
-		push = ft_create_node(n, suffix, lit);
+		push = ft_create_node(n, idx, lit);
 		if (!push)
 			return (0);
 		push->next = *lst;
@@ -63,7 +63,7 @@ int		ft_lst_push(t_dict **lst, int n, int suffix, char *lit)
 	}
 	else
 	{
-		if (!(*lst = ft_create_node(n, suffix, lit)))
+		if (!(*lst = ft_create_node(n, idx, lit)))
 			return (0);
 	}
 	return (1);
@@ -72,17 +72,17 @@ int		ft_lst_push(t_dict **lst, int n, int suffix, char *lit)
 static void	ft_lst_swap(t_dict *lst)
 {
 	int		nb;
-	int		suffix;
+	int		idx;
 	char	*literal;
 
 	nb = lst->nb;
-	suffix = lst->suffix;
+	idx = lst->idx;
 	literal = lst->literal;
 	lst->nb = lst->next->nb;
-	lst->suffix = lst->next->suffix;
+	lst->idx = lst->next->idx;
 	lst->literal = lst->next->literal;
 	lst->next->nb = nb;
-	lst->next->suffix = suffix;
+	lst->next->idx = idx;
 	lst->next->literal = literal;
 }
 

@@ -14,7 +14,7 @@
 
 void	print_nb(int nb, t_dict *start)
 {
-	while (start->suffix == 1 || nb != start->nb)
+	while (start->idx == 1 || nb != start->nb)
 		start = start->next;
 	ft_putstr(start->literal);
 	if (nb < 20 || nb > 99)
@@ -23,7 +23,7 @@ void	print_nb(int nb, t_dict *start)
 
 void	print_union(int i, char *nbr, int j, t_dict *start)
 {
-	while (start->suffix == 0 || j != start->nb)
+	while (start->idx == 0 || j != start->nb)
 		start = start->next;
 	ft_putstr(start->literal);
 	while (nbr[i] == '0')

@@ -23,7 +23,7 @@
 typedef struct	s_dict
 {
 	int				nb;
-	int				suffix;
+	int				idx;
 	char			*literal;
 	struct s_dict	*next;
 }				t_dict;
@@ -33,8 +33,8 @@ int				ft_strlen(char *str);
 
 void			ft_lst_sort(t_dict **begin_list);
 void			ft_lst_clear(t_dict **begin_with);
-t_dict			*ft_create_node(int n, int suffix, char *literal);
-int				ft_lst_push(t_dict **liste, int n, int suffix, char *lit);
+t_dict			*ft_create_node(int n, int idx, char *literal);
+int				ft_lst_push(t_dict **liste, int n, int idx, char *lit);
 
 int				ft_file_read(char *filepath, t_dict **begin);
 

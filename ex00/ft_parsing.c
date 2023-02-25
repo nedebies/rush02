@@ -23,7 +23,7 @@ int		check_exists(t_dict *begin, int nb)
 	return (1);
 }
 
-int		get_nb(int *nb, int *suffix, char *str)
+int		get_nb(int *nb, int *idx, char *str)
 {
 	int		i;
 	int		j;
@@ -41,10 +41,10 @@ int		get_nb(int *nb, int *suffix, char *str)
 			if ((j == 0 && str[j] != '1') || (j != 0 && str[j] != '0'))
 				return (0);
 		*nb = i / 3;
-		*suffix = 1;
+		*idx = 1;
 	}
 	else
-		*suffix = 0;
+		*idx = 0;
 	return (1);
 }
 
@@ -96,14 +96,14 @@ int		parse_dict(t_dict **begin, char *str)
 {
 	int		nb;
 	int		i;
-	int		suffix;
+	int		idx;
 	char	*s;
 
-	if (get_nb(&nb, &suffix, str) == 0)
+	if (get_nb(&nb, &idx, str) == 0)
 		return (0);
 	if (nb != 0 || (nb = ft_simple_atoi(str)) != -1)
 	{
-		if (suffix == 0)
+		if (idx == 0)
 			if (check_exists(*begin, nb) == 0)
 				return (0);
 		i = 0;
@@ -113,7 +113,7 @@ int		parse_dict(t_dict **begin, char *str)
 			return (0);
 		if ((s = ft_check_space(s)) == NULL)
 			return (0);
-		if (ft_lst_push(begin, nb, suffix, s) == 0)
+		if (ft_lst_push(begin, nb, idx, s) == 0)
 			return (0);
 		return (1);
 	}
