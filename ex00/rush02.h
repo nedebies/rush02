@@ -28,26 +28,27 @@ typedef struct	s_dict
 	struct s_dict	*next;
 }				t_dict;
 
-char			*ft_strdup(char *src);
-int				ft_strlen(char *str);
+char		*ft_strdup(char *src);
+int			ft_strlen(char *str);
 
-void			ft_lst_sort(t_dict **begin_list);
-void			ft_lst_clear(t_dict **begin_with);
-t_dict			*ft_create_node(int n, int idx, char *literal);
-int				ft_lst_push(t_dict **liste, int n, int idx, char *lit);
+void		ft_lst_sort(t_dict **begin_list);
+void		ft_lst_clear(t_dict **begin_with);
+t_dict		*ft_create_node(int n, int idx, char *literal);
+int			ft_lst_push(t_dict **liste, int n, int idx, char *lit);
 
-int				ft_file_read(char *filepath, t_dict **begin);
+int			ft_file_read(char *filepath, t_dict **begin);
 
-int				ft_simple_atoi(char *str);
-void			ft_putstr(char *str);
-void			ft_putnbr(int nb);
-int				parse_dict(t_dict **begin, char *str);
+int			ft_simple_atoi(char *str);
+void		ft_putstr(char *str);
+void		ft_putnbr(int nb);
+int			parse_dict(t_dict **begin, char *str);
 
-int				check_number(char *nbr, t_dict *begin_list);
-int				check_nb(int nb, t_dict *begin_list);
+int			check_number(char *nbr, t_dict *begin_list);
+int			check_nb(int nb, t_dict *begin_list);
 
-void			to_print(int nbr, t_dict *begin_list);
-void			print_union(int i, char *nbr, int j, t_dict *begin_list);
-int				check_length(char *nbr);
+void		print_nb(int nb, t_dict *start);
+void		to_print(int nbr, t_dict *begin_list);
+void		print_union(int i, char *nbr, int j, t_dict *begin_list);
+int			check_length(char *nbr);
 
 #endif

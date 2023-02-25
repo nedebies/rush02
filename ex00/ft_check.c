@@ -6,13 +6,13 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 05:41:42 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/02/25 06:07:29 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/02/25 10:46:55 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-int		check_nb(int nb, t_dict *start)
+int	check_nb(int nb, t_dict *start)
 {
 	while (start->next != 0 && (start->idx == 1 || nb != start->nb))
 		start = start->next;
@@ -21,10 +21,10 @@ int		check_nb(int nb, t_dict *start)
 	return (1);
 }
 
-int		check_length(char *nbr)
+int	check_length(char *nbr)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -35,7 +35,7 @@ int		check_length(char *nbr)
 	return (i);
 }
 
-static int		check_idx(int j, t_dict *start)
+static int	check_idx(int j, t_dict *start)
 {
 	while (start->next != 0 && (start->idx == 0 || j != start->nb))
 		start = start->next;
@@ -47,7 +47,7 @@ static int		check_idx(int j, t_dict *start)
 	return (1);
 }
 
-int		first_check(char *nbr, int *i, int *j, t_dict *start)
+int	first_check(char *nbr, int *i, int *j, t_dict *start)
 {
 	int		k;
 	int		nb;
@@ -100,7 +100,7 @@ void	make_three(int i, int j, char *nbr, t_dict *start)
 	}
 }
 
-int		check_number(char *nbr, t_dict *start)
+int	check_number(char *nbr, t_dict *start)
 {
 	int		i;
 	int		j;
@@ -115,7 +115,7 @@ int		check_number(char *nbr, t_dict *start)
 		return (0);
 	if (!ft_simple_atoi(nbr))
 	{
-		ft_putstr("zero");
+		print_nb(0, start);
 		write(1, "\n", 1);
 		return (0);
 	}

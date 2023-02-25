@@ -6,13 +6,13 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 05:39:47 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/02/25 06:08:10 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/02/25 10:52:53 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-int		check_exists(t_dict *begin, int nb)
+int	check_exists(t_dict *begin, int nb)
 {
 	while (begin)
 	{
@@ -23,7 +23,7 @@ int		check_exists(t_dict *begin, int nb)
 	return (1);
 }
 
-int		get_nb(int *nb, int *idx, char *str)
+int	get_nb(int *nb, int *idx, char *str)
 {
 	int		i;
 	int		j;
@@ -61,7 +61,8 @@ char	*ft_check_space(char *str)
 			j++;
 		else if (str[i - 1] != ' ')
 			j++;
-	if ((s = malloc(sizeof(char) * (j + 1))) == NULL)
+	s = malloc(sizeof(char) * (j + 1));
+	if (!s)
 		return (NULL);
 	i = -1;
 	j = 0;
@@ -72,7 +73,7 @@ char	*ft_check_space(char *str)
 	return (s);
 }
 
-static int		check_line(char *str, int *i)
+static int	check_line(char *str, int *i)
 {
 	int		j;
 
@@ -92,7 +93,7 @@ static int		check_line(char *str, int *i)
 	return (1);
 }
 
-int		parse_dict(t_dict **begin, char *str)
+int	parse_dict(t_dict **begin, char *str)
 {
 	int		nb;
 	int		i;

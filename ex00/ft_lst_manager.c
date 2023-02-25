@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 05:30:03 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/02/25 06:07:19 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/02/25 10:49:31 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_lst_clear(t_dict **start)
 		}
 }
 
-int		ft_lst_push(t_dict **lst, int n, int idx, char *lit)
+int	ft_lst_push(t_dict **lst, int n, int idx, char *lit)
 {
 	t_dict	*push;
 
@@ -63,7 +63,8 @@ int		ft_lst_push(t_dict **lst, int n, int idx, char *lit)
 	}
 	else
 	{
-		if (!(*lst = ft_create_node(n, idx, lit)))
+		*lst = ft_create_node(n, idx, lit);
+		if (!(*lst))
 			return (0);
 	}
 	return (1);
