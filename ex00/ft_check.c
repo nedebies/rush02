@@ -12,6 +12,45 @@
 
 #include "rush02.h"
 
+int		check_nb(int nb, t_dict *begin_list)
+{
+	while (begin_list->next != 0
+		&& (begin_list->suf == 1 || nb != begin_list->nb))
+		begin_list = begin_list->next;
+	if (begin_list->next == 0)
+		return (0);
+	return (1);
+}
+
+int		check_length(char *nbr)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while (nbr[j] == '0')
+		j++;
+	while (nbr[i + j])
+		i++;
+	return (i);
+}
+
+void	check_and(int nb, int i, char *nbr)
+{
+	int j;
+
+	j = 0;
+	if (nb != 0)
+	{
+		while (nbr[j] == '0' && j < i)
+			j++;
+		if ((i - j) > 2 && (nb % 100 != 0) && check_length(nbr) > 2
+			&& (nb / 100 >= 1 || i == check_length(nbr)))
+			ft_putstr("and ");
+	}
+}
+
 static int		check_suff(int j, t_dict *begin_list)
 {
 	while (begin_list->next != 0
@@ -45,7 +84,7 @@ int		first_check(char *nbr, int *i, int *j, t_dict *start)
 		send_to_print((nb = ft_simple_atoi(nbr2)), start, *i, nbr);
 		if (*j == 0)
 		{
-			ft_putchar('\n');
+			write(1, "\n", 1);
 			return (0);
 		}
 		if (*j >= 3)
@@ -97,12 +136,12 @@ int		check_number(char *nbr, t_dict *start)
 	if (!ft_simple_atoi(nbr))
 	{
 		ft_putstr("zero");
-		ft_putchar('\n');
+		write(1, "\n", 1);
 		return (0);
 	}
 	if (first_check(nbr, &i, &j, start) == 0)
 		return (0);
 	make_three(i, j, nbr, start);
-	ft_putchar('\n');
+	write(1, "\n", 1);
 	return (0);
 }

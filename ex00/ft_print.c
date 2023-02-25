@@ -18,9 +18,7 @@ void	print_nb(int nb, t_dict *begin_list)
 		begin_list = begin_list->next;
 	ft_putstr(begin_list->literal);
 	if (nb < 20 || nb > 99)
-	{
-		ft_putchar(' ');
-	}
+		write(1, " ", 1);
 }
 
 void	print_suff(int i, char *nbr, int j, t_dict *begin_list)
@@ -34,7 +32,7 @@ void	print_suff(int i, char *nbr, int j, t_dict *begin_list)
 		&& i != check_length(nbr) - 2)
 		ft_putstr(", ");
 	if (i == (check_length(nbr) - 1) || i == (check_length(nbr) - 2))
-		ft_putchar(' ');
+		write(1, " ", 1);
 }
 
 void	print_units(int nbr, char *nbrc, int i, t_dict *begin_list)
@@ -93,7 +91,7 @@ void	send_to_print(int nbr, t_dict *begin_list, int i, char *nbrc)
 		check_and(nbr, i, nbrc);
 		print_nb(nb, begin_list);
 		if (nb >= 20 && nb <= 99)
-			ft_putchar(' ');
+			write(1, " ", 1);
 	}
 	else
 	{

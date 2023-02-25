@@ -38,11 +38,14 @@ void	ft_putnbr(int nb)
 	n = nb;
 	if (n < 0)
 	{
-		ft_putchar('-');
+		write(1, " ", 1);
 		n *= -1;
 	}
 	if (n <= 9)
-		ft_putchar(n + '0');
+	{
+		n = n + '0';
+		write(1, &n, 1);
+	}
 	else
 	{
 		ft_putnbr(n / 10);

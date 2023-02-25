@@ -59,6 +59,6 @@ int		main(int ac, char **av)
 		else
 			ft_putstr("Dict Error\n");
 	}
-	ft_list_clear(&dict);
+	ft_lst_clear(&dict);
 	return (0);
 }

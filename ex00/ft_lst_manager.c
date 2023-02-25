@@ -12,7 +12,7 @@
 
 #include "rush02.h"
 
-void	ft_list_clear(t_dict **start)
+void	ft_lst_clear(t_dict **start)
 {
 	t_dict	*ptr;
 	t_dict	*lst;
