@@ -66,10 +66,7 @@ int		first_check(char *nbr, int *i, int *j, t_dict *start)
 		n[k] = 0;
 		to_print((nb = ft_simple_atoi(n)), start);
 		if (*j == 0)
-		{
-			# include <fcntl.h>
 			return (0);
-		}
 		if (*j >= 3)
 			print_union(*i, nbr, *j / 3, start);
 	}

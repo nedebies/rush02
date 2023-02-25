@@ -18,7 +18,7 @@ SRC = 	./main.c \
 		./ft_print.c \
 		./ft_read.c 
 
-NAME = rush02
+NAME = rush-02
 
 CC = gcc
 
