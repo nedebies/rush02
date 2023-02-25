@@ -28,13 +28,13 @@ void	ft_lst_clear(t_dict **start)
 		}
 }
 
-int		ft_lst_push(t_dict **lst, int n, int suf, char *lit)
+int		ft_lst_push(t_dict **lst, int n, int suffix, char *lit)
 {
 	t_dict	*push;
 
 	if (lst)
 	{
-		push = ft_create_node(n, suf, lit);
+		push = ft_create_node(n, suffix, lit);
 		if (!push)
 			return (0);
 		push->next = *lst;
@@ -42,12 +42,12 @@ int		ft_lst_push(t_dict **lst, int n, int suf, char *lit)
 	}
 	else
 	{
-		if (!(*lst = ft_create_node(n, suf, lit)))
+		if (!(*lst = ft_create_node(n, suffix, lit)))
 			return (0);
 	}
 	return (1);
 }
-t_dict	*ft_create_node(int n, int suf, char *literal)
+t_dict	*ft_create_node(int n, int suffix, char *literal)
 {
 	t_dict	*node;
 
@@ -58,8 +58,8 @@ t_dict	*ft_create_node(int n, int suf, char *literal)
 	if (node)
 	{
 		node->nb = n;
-		node->suf = suf;
-		node->literal = malloc(sizeof(char) * (strlen(literal) + 1));
+		node->suffix = suffix;
+		node->literal = malloc(sizeof(char) * (ft_strlen(literal) + 1));
 		if (!node->literal)
 			return (0);
 		node->literal = literal;
@@ -71,17 +71,17 @@ t_dict	*ft_create_node(int n, int suf, char *literal)
 static void	ft_lst_swap(t_dict *lst)
 {
 	int		nb;
-	int		suf;
+	int		suffix;
 	char	*literal;
 
 	nb = lst->nb;
-	suf = lst->suf;
+	suffix = lst->suffix;
 	literal = lst->literal;
 	lst->nb = lst->next->nb;
-	lst->suf = lst->next->suf;
+	lst->suffix = lst->next->suffix;
 	lst->literal = lst->next->literal;
 	lst->next->nb = nb;
-	lst->next->suf = suf;
+	lst->next->suffix = suffix;
 	lst->next->literal = literal;
 }
 

@@ -49,6 +49,7 @@ int		main(int ac, char **av)
 	char	*nb;
 	char	*path;
 
+
 	if (ft_get_val(ac, av, &nb, &path) == 0 || ft_str_is_numeric(nb) == 0)
 		ft_putstr("Error\n");
 	else

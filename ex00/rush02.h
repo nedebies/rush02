@@ -13,22 +13,17 @@
 #ifndef RUSH02_H
 # define RUSH02_H
 
-# define __BUFF 8
-
-# include <fcntl.h>
 # include <unistd.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <errno.h>
-# include <string.h>
-# include <libgen.h>
+# include <fcntl.h> // en
+# include <sys/stat.h> // open
+# include <sys/types.h> // open
 # include <stdlib.h>
 # include <unistd.h>
 
 typedef struct	s_dict
 {
 	int				nb;
-	int				suf;
+	int				suffix;
 	char			*literal;
 	struct s_dict	*next;
 }				t_dict;
@@ -36,8 +31,8 @@ typedef struct	s_dict
 char			**ft_split(char *str, char *charset);
 char			*ft_strdup(char *src);
 t_dict			*ft_list_push_strs(int size, char **strs);
-t_dict			*ft_create_node(int n, int suf, char *literal);
-int				ft_lst_push(t_dict **liste, int n, int suf, char *lit);
+t_dict			*ft_create_node(int n, int suffix, char *literal);
+int				ft_lst_push(t_dict **liste, int n, int suffix, char *lit);
 int				ft_file_read(char *filepath, t_dict **begin);
 int				ft_simple_atoi(char *str);
 void			ft_putstr(char *str);
@@ -49,9 +44,8 @@ void			ft_lst_sort(t_dict **begin_list);
 void			ft_lst_clear(t_dict **begin_with);
 void			check_and(int nb, int i, char *nbr);
 int				check_nb(int nb, t_dict *begin_list);
-void			send_to_print(int nbr, t_dict *begin_list, int i, char *nbrc);
-void			print_suff(int i, char *nbr, int j, t_dict *begin_list);
+void			to_print(int nbr, t_dict *begin_list, int i, char *nbrc);
+void			print_union(int i, char *nbr, int j, t_dict *begin_list);
 int				check_length(char *nbr);
-//int				check_suff(int j, t_dict *begin_list);
 
 #endif

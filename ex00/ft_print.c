@@ -12,90 +12,88 @@
 
 #include "rush02.h"
 
-void	print_nb(int nb, t_dict *begin_list)
+void	print_nb(int nb, t_dict *start)
 {
-	while (begin_list->suf == 1 || nb != begin_list->nb)
-		begin_list = begin_list->next;
-	ft_putstr(begin_list->literal);
+	while (start->suffix == 1 || nb != start->nb)
+		start = start->next;
+	ft_putstr(start->literal);
 	if (nb < 20 || nb > 99)
 		write(1, " ", 1);
 }
 
-void	print_suff(int i, char *nbr, int j, t_dict *begin_list)
+void	print_union(int i, char *nbr, int j, t_dict *start)
 {
-	while (begin_list->suf == 0 || j != begin_list->nb)
-		begin_list = begin_list->next;
-	ft_putstr(begin_list->literal);
+	while (start->suffix == 0 || j != start->nb)
+		start = start->next;
+	ft_putstr(start->literal);
 	while (nbr[i] == '0')
 		i++;
-	if (nbr[i] != 0 && i != (check_length(nbr) - 1)
-		&& i != check_length(nbr) - 2)
-		ft_putstr(", ");
+	if (nbr[i] != 0 && i != (check_length(nbr) - 1) && i != check_length(nbr) - 2)
+		ft_putstr(" ");
 	if (i == (check_length(nbr) - 1) || i == (check_length(nbr) - 2))
 		write(1, " ", 1);
 }
 
-void	print_units(int nbr, char *nbrc, int i, t_dict *begin_list)
+void	print_spaces(int nbr, char *n, int i, t_dict *start)
 {
 	int		nb;
 
 	if ((nbr % 100) >= 20)
 	{
-		check_and(nbr, i, nbrc);
-		print_nb((nb = (nbr % 100) - (nbr % 10)), begin_list);
+		check_and(nbr, i, n);
+		print_nb((nb = (nbr % 100) - (nbr % 10)), start);
 		if (nbr % 10 != 0)
 		{
 			nb = nbr % 10;
-			ft_putstr("-");
-			print_nb(nb, begin_list);
+			ft_putstr(" ");
+			print_nb(nb, start);
 		}
 	}
 	else if ((nbr % 100) < 20 && (nbr % 100 != 0))
 	{
-		print_nb((nb = nbr % 100), begin_list);
+		print_nb((nb = nbr % 100), start);
 	}
 }
 
-void	print_hundreds(int nbr, char *nbrc, int i, t_dict *begin_list)
+void	print_hundreds(int nbr, char *n, int i, t_dict *start)
 {
 	int		nb;
 
 	if ((nbr / 100) > 0)
 	{
 		nb = nbr / 100;
-		print_nb(nb, begin_list);
-		print_nb(100, begin_list);
+		print_nb(nb, start);
+		print_nb(100, start);
 	}
-	if (check_nb(nbr % 100, begin_list) == 1)
+	if (check_nb(nbr % 100, start) == 1)
 	{
-		check_and(nbr, i, nbrc);
-		print_nb(nbr % 100, begin_list);
+		check_and(nbr, i, n);
+		print_nb(nbr % 100, start);
 		if ((nbr % 100) >= 20)
 			ft_putstr(" ");
 	}
 	else
 	{
-		print_units(nbr, nbrc, i, begin_list);
+		print_spaces(nbr, n, i, start);
 	}
 }
 
-void	send_to_print(int nbr, t_dict *begin_list, int i, char *nbrc)
+void	to_print(int nbr, t_dict *start, int i, char *n)
 {
 	int nb;
 
 	nb = nbr;
-	if (check_nb(nb, begin_list) == 1)
+	if (check_nb(nb, start) == 1)
 	{
 		if (nb == 100)
 			ft_putstr("one ");
-		check_and(nbr, i, nbrc);
-		print_nb(nb, begin_list);
+		check_and(nbr, i, n);
+		print_nb(nb, start);
 		if (nb >= 20 && nb <= 99)
 			write(1, " ", 1);
 	}
 	else
 	{
-		print_hundreds(nbr, nbrc, i, begin_list);
+		print_hundreds(nbr, n, i, start);
 	}
 }
-

@@ -12,12 +12,11 @@
 
 #include "rush02.h"
 
-int		check_nb(int nb, t_dict *begin_list)
+int		check_nb(int nb, t_dict *start)
 {
-	while (begin_list->next != 0
-		&& (begin_list->suf == 1 || nb != begin_list->nb))
-		begin_list = begin_list->next;
-	if (begin_list->next == 0)
+	while (start->next != 0 && (start->suffix == 1 || nb != start->nb))
+		start = start->next;
+	if (start->next == 0)
 		return (0);
 	return (1);
 }
@@ -51,12 +50,11 @@ void	check_and(int nb, int i, char *nbr)
 	}
 }
 
-static int		check_suff(int j, t_dict *begin_list)
+static int		check_suffixf(int j, t_dict *start)
 {
-	while (begin_list->next != 0
-		&& (begin_list->suf == 0 || j != begin_list->nb))
-		begin_list = begin_list->next;
-	if (begin_list->next == 0)
+	while (start->next != 0 && (start->suffix == 0 || j != start->nb))
+		start = start->next;
+	if (start->next == 0)
 	{
 		ft_putstr("Error\n");
 		return (0);
@@ -81,14 +79,14 @@ int		first_check(char *nbr, int *i, int *j, t_dict *start)
 			(*j)--;
 		}
 		nbr2[k] = 0;
-		send_to_print((nb = ft_simple_atoi(nbr2)), start, *i, nbr);
+		to_print((nb = ft_simple_atoi(nbr2)), start, *i, nbr);
 		if (*j == 0)
 		{
-			write(1, "\n", 1);
+			# include <fcntl.h>
 			return (0);
 		}
 		if (*j >= 3)
-			print_suff(*i, nbr, *j / 3, start);
+			print_union(*i, nbr, *j / 3, start);
 	}
 	return (1);
 }
@@ -113,9 +111,9 @@ void	make_three(int i, int j, char *nbr, t_dict *start)
 		nb = ft_simple_atoi(nbr2);
 		if (nb != 0)
 		{
-			send_to_print(nb, start, i, nbr);
+			to_print(nb, start, i, nbr);
 			if (j >= 3)
-				print_suff(i, nbr, j / 3, start);
+				print_union(i, nbr, j / 3, start);
 		}
 	}
 }
@@ -131,7 +129,7 @@ int		check_number(char *nbr, t_dict *start)
 	nb = 0;
 	k = 0;
 	j = check_length(nbr);
-	if (j > 3 && check_suff((j - 1) / 3, start) == 0)
+	if (j > 3 && check_suffixf((j - 1) / 3, start) == 0)
 		return (0);
 	if (!ft_simple_atoi(nbr))
 	{
