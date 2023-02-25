@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 05:37:12 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/02/25 06:03:14 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/02/25 06:15:22 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static char	*ft_addchar(char *str, char *buf)
 	i = 0;
 	while (str[i])
 		i++;
-	if ((new = malloc(sizeof(char) * (i + 2))) == NULL)
+	new = malloc(sizeof(char) * (i + 2));
+	if (!new)
 		return (NULL);
 	i = -1;
 	while (str[++i])
@@ -31,7 +32,7 @@ static char	*ft_addchar(char *str, char *buf)
 	return (new);
 }
 
-static int		gest_buf(int file, t_dict **begin)
+static int		ft_buffer(int file, t_dict **begin)
 {
 	int		size;
 	char	*str;
@@ -67,7 +68,7 @@ int		ft_file_read(char *filepath, t_dict **begin)
 	file = open(filepath, O_RDWR);
 	if (file != -1)
 	{
-		if (gest_buf(file, begin) == 0)
+		if (ft_buffer(file, begin) == 0)
 			return (-1);
 		return (1);
 	}

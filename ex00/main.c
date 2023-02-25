@@ -6,13 +6,13 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 05:20:04 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/02/25 06:03:30 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/02/25 06:13:29 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-static int		get_av(int ac, char **av, char **nb, char **path)
+static int		ft_get_val(int ac, char **av, char **nb, char **path)
 {
 	if (ac == 2)
 	{
@@ -49,7 +49,7 @@ int		main(int ac, char **av)
 	char	*nb;
 	char	*path;
 
-	if (get_av(ac, av, &nb, &path) == 0 || ft_str_is_numeric(nb) == 0)
+	if (ft_get_val(ac, av, &nb, &path) == 0 || ft_str_is_numeric(nb) == 0)
 		ft_putstr("Error\n");
 	else
 	{

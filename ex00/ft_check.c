@@ -94,7 +94,7 @@ int		check_number(char *nbr, t_dict *start)
 	j = check_length(nbr);
 	if (j > 3 && check_suff((j - 1) / 3, start) == 0)
 		return (0);
-	if (ft_simple_atoi(nbr) == 0)
+	if (!ft_simple_atoi(nbr))
 	{
 		ft_putstr("zero");
 		ft_putchar('\n');

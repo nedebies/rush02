@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 05:28:59 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/02/25 06:02:44 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/02/25 06:12:24 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ int		check_length(char *nbr)
 	while (nbr[j] == '0')
 		j++;
 	while (nbr[i + j])
-	{
 		i++;
-	}
 	return (i);
 }
 
