@@ -29,7 +29,7 @@ void	print_union(int i, char *nbr, int j, t_dict *start)
 	while (nbr[i] == '0')
 		i++;
 	if (nbr[i] != 0 && i != (check_length(nbr) - 1) && i != check_length(nbr) - 2)
-		ft_putstr(" ");
+		write(1, " ", 1);
 	if (i == (check_length(nbr) - 1) || i == (check_length(nbr) - 2))
 		write(1, " ", 1);
 }
@@ -44,7 +44,7 @@ void	print_spaces(int nbr, t_dict *start)
 		if (nbr % 10 != 0)
 		{
 			nb = nbr % 10;
-			ft_putstr(" ");
+			write(1, " ", 1);
 			print_nb(nb, start);
 		}
 	}
@@ -68,7 +68,7 @@ void	print_hundreds(int nbr, t_dict *start)
 	{
 		print_nb(nbr % 100, start);
 		if ((nbr % 100) >= 20)
-			ft_putstr(" ");
+			write(1, " ", 1);
 	}
 	else
 		print_spaces(nbr, start);
@@ -82,7 +82,7 @@ void	to_print(int nbr, t_dict *start)
 	if (check_nb(nb, start) == 1)
 	{
 		if (nb == 100)
-			ft_putstr("one ");
+			write(1, "one ", 4);
 		print_nb(nb, start);
 		if (nb >= 20 && nb <= 99)
 			write(1, " ", 1);

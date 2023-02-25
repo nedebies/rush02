@@ -51,15 +51,14 @@ int		main(int ac, char **av)
 
 
 	if (ft_get_val(ac, av, &nb, &path) == 0 || ft_str_is_numeric(nb) == 0)
-		ft_putstr("Error\n");
+		write(1, "Error\n", 6);
 	else
 	{
 		dict = 0;
 		if (ft_file_read(path, &dict) == 1)
 			check_number(nb, dict);
 		else
-			ft_putstr("Dict Error\n");
-	}
+			write(1, "Dict Error\n", 12);
 	ft_lst_clear(&dict);
 	return (0);
 }

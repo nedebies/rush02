@@ -12,6 +12,27 @@
 
 #include "rush02.h"
 
+t_dict	*ft_create_node(int n, int suffix, char *literal)
+{
+	t_dict	*node;
+
+	node = NULL;
+	node = malloc(sizeof(t_dict));
+	if (!node)
+		return (0);
+	if (node)
+	{
+		node->nb = n;
+		node->suffix = suffix;
+		node->literal = malloc(sizeof(char) * (ft_strlen(literal) + 1));
+		if (!node->literal)
+			return (0);
+		node->literal = literal;
+		node->next = NULL;
+	}
+	return (node);
+}
+
 void	ft_lst_clear(t_dict **start)
 {
 	t_dict	*ptr;
@@ -46,26 +67,6 @@ int		ft_lst_push(t_dict **lst, int n, int suffix, char *lit)
 			return (0);
 	}
 	return (1);
-}
-t_dict	*ft_create_node(int n, int suffix, char *literal)
-{
-	t_dict	*node;
-
-	node = NULL;
-	node = malloc(sizeof(t_dict));
-	if (!node)
-		return (0);
-	if (node)
-	{
-		node->nb = n;
-		node->suffix = suffix;
-		node->literal = malloc(sizeof(char) * (ft_strlen(literal) + 1));
-		if (!node->literal)
-			return (0);
-		node->literal = literal;
-		node->next = NULL;
-	}
-	return (node);
 }
 
 static void	ft_lst_swap(t_dict *lst)
