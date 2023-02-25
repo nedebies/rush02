@@ -59,6 +59,7 @@ int		main(int ac, char **av)
 			check_number(nb, dict);
 		else
 			write(1, "Dict Error\n", 12);
+	}
 	ft_lst_clear(&dict);
 	return (0);
 }
