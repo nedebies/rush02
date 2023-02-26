@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 05:37:12 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/02/25 06:15:22 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/02/26 12:23:53 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,14 @@ static char	*ft_addchar(char *str, char *buf)
 	return (new);
 }
 
-static int		ft_buffer(int file, t_dict **begin)
+static int	ft_buffer(int file, t_dict **begin, char *str, char *buf)
 {
-	int		size;
-	char	*str;
-	char	buf[1];
-
-	str = malloc(sizeof(char));
-	str[0] = 0;
-	while ((size = read(file, buf, 1)) != 0)
+	while ((read(file, buf, 1)) != 0)
+	{
 		if (buf[0] != '\n')
 		{
-			if ((str = ft_addchar(str, buf)) == NULL)
+			str = ft_addchar(str, buf);
+			if (!str)
 				return (0);
 		}
 		else
@@ -57,18 +53,24 @@ static int		ft_buffer(int file, t_dict **begin)
 			else if (ft_strlen(str) != 0)
 				return (0);
 		}
+	}
 	ft_lst_sort(begin);
 	return (1);
 }
 
-int		ft_file_read(char *filepath, t_dict **begin)
+int	ft_file_read(char *filepath, t_dict **begin)
 {
-	int			file;
+	int		file;
+	char	*str;
+	char	buf[1];
 
+	str = malloc(sizeof(char));
+	if (!str)
+		return (0);
 	file = open(filepath, O_RDWR);
 	if (file != -1)
 	{
-		if (ft_buffer(file, begin) == 0)
+		if (ft_buffer(file, begin, str, buf) == 0)
 			return (-1);
 		return (1);
 	}

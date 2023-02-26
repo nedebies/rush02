@@ -6,7 +6,7 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 05:38:25 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/02/25 06:03:29 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/02/25 12:21:18 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ void	print_nb(int nb, t_dict *start)
 		write(1, " ", 1);
 }
 
-void	print_union(int i, char *nbr, int j, t_dict *start)
+void	print_union(int i, char *n, int j, t_dict *start)
 {
 	while (start->idx == 0 || j != start->nb)
 		start = start->next;
 	ft_putstr(start->literal);
-	while (nbr[i] == '0')
+	while (n[i] == '0')
 		i++;
-	if (nbr[i] != 0 && i != (check_length(nbr) - 1) && i != check_length(nbr) - 2)
+	if (n[i] != 0 && i != (check_length(n) - 1) && i != check_length(n) - 2)
 		write(1, " ", 1);
-	if (i == (check_length(nbr) - 1) || i == (check_length(nbr) - 2))
+	if (i == (check_length(n) - 1) || i == (check_length(n) - 2))
 		write(1, " ", 1);
 }
 
@@ -76,7 +76,7 @@ void	print_hundreds(int nbr, t_dict *start)
 
 void	to_print(int nbr, t_dict *start)
 {
-	int nb;
+	int	nb;
 
 	nb = nbr;
 	if (check_nb(nb, start) == 1)

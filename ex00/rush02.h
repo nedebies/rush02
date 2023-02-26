@@ -6,21 +6,20 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 05:19:10 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/02/25 06:07:39 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/02/26 11:46:39 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RUSH02_H
 # define RUSH02_H
 
-# include <unistd.h>
-# include <fcntl.h> // open
-# include <sys/stat.h> // open
-# include <sys/types.h> // open
+# include <fcntl.h>
+# include <sys/stat.h>
+# include <sys/types.h> 
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct	s_dict
+typedef struct s_dict
 {
 	int				nb;
 	int				idx;
@@ -45,7 +44,7 @@ int			parse_dict(t_dict **begin, char *str);
 
 int			check_number(char *nbr, t_dict *begin_list);
 int			check_nb(int nb, t_dict *begin_list);
-
+int			get_nb(int *nb, int *idx, char *str);
 void		print_nb(int nb, t_dict *start);
 void		to_print(int nbr, t_dict *begin_list);
 void		print_union(int i, char *nbr, int j, t_dict *begin_list);

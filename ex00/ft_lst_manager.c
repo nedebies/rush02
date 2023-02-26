@@ -40,6 +40,7 @@ void	ft_lst_clear(t_dict **start)
 
 	lst = *start;
 	if (lst)
+	{
 		while (lst)
 		{
 			ptr = lst->next;
@@ -47,6 +48,7 @@ void	ft_lst_clear(t_dict **start)
 			free(lst);
 			lst = ptr;
 		}
+	}
 }
 
 int	ft_lst_push(t_dict **lst, int n, int idx, char *lit)

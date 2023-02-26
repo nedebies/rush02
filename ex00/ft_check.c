@@ -12,15 +12,6 @@
 
 #include "rush02.h"
 
-int	check_nb(int nb, t_dict *start)
-{
-	while (start->next != 0 && (start->idx == 1 || nb != start->nb))
-		start = start->next;
-	if (start->next == 0)
-		return (0);
-	return (1);
-}
-
 int	check_length(char *nbr)
 {
 	int	i;

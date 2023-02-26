@@ -6,13 +6,13 @@
 /*   By: nesdebie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/25 05:23:35 by nesdebie          #+#    #+#             */
-/*   Updated: 2023/02/25 06:09:49 by nesdebie         ###   ########.fr       */
+/*   Updated: 2023/02/26 11:50:07 by nesdebie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush02.h"
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int		i;
 
@@ -76,7 +76,8 @@ char	*ft_strdup(char *str)
 		return (s);
 	}
 }
-int		ft_simple_atoi(char *str)
+
+int	ft_simple_atoi(char *str)
 {
 	int		i;
 	int		nb;
@@ -92,4 +93,3 @@ int		ft_simple_atoi(char *str)
 		return (-1);
 	return (nb);
 }
-
